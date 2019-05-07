@@ -1,2 +1,6 @@
 ---
-# tasks file for skeleton
+# tasks file for nvme
+
+- name: Install nvme-cli
+  package:
+    name: nvme-cli
