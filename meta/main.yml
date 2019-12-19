@@ -1,14 +1,15 @@
 ---
 galaxy_info:
   author: Shane Frasier
-  description: Install the prerequisites for working with NVMe drives.
-  company: CISA NCATS
+  description: Install prerequisites and configure grub to handle NVMe drives.
+  company: CISA Cyber Assessments
   license: CC0
   min_ansible_version: 2.0
   platforms:
     - name: Debian
       versions:
         - stretch
+        - buster
     - name: Amazon
       versions:
         - 2018.03
