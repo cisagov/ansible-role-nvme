@@ -14,3 +14,17 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
 def test_packages(host, pkg):
     """Test that the appropriate packages were installed."""
     assert host.package(pkg).is_installed
+
+
+@pytest.mark.parametrize(
+    "file,content",
+    [("/etc/sysctl.d/nvme_core_io_timeout.conf", r"^nvme_core.io_timeout=[0-9]*$")],
+)
+def test_files_content(host, file, content):
+    """Test that config files were modified as expected."""
+    f = host.file(file)
+
+    # This kernel configuration setting is already present in Amazon Linux
+    if host.system_info.distribution != "amzn":
+        assert f.exists
+        assert f.contains(content)
