@@ -4,3 +4,29 @@
 - name: Install nvme-cli
   package:
     name: nvme-cli
+
+- name: Set NVMe timeout value to use (Debian Stretch)
+  set_fact:
+    timeout_value: 255
+  when:
+    - ansible_facts['distribution'] == 'Debian'
+    - ansible_facts['distribution_major_version'] == '9'
+
+- name: Set NVMe timeout value to use (not Debian Stretch)
+  set_fact:
+    timeout_value: 4294967295
+  when:
+    - ansible_facts['distribution'] != 'Debian' or ansible_facts['distribution_major_version'] != '9'
+
+# Setting this kernel parameter to a high value fixes the bug where
+# NVMe volumes occassionally fail and are mounted read-only.
+#
+# See
+# https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/nvme-ebs-volumes.html#timeout-nvme-ebs-volumes
+# for more details.
+- name: Set NVMe timeout kernel parameter to maximum value
+  template:
+    src: nvme_core_io_timeout.conf.j2
+    dest: /etc/sysctl.d/nvme_core_io_timeout.conf
+    mode: 0400
+  when: ansible_distribution != 'Amazon'
