@@ -1,0 +1,9 @@
+---
+# The kmod package is installed anywhere we would be applying this
+# Ansible role
+- name: Prepare
+  hosts: all
+  tasks:
+    - name: Install kmod
+      package:
+        name: kmod
