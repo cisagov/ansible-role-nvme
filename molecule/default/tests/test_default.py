@@ -18,7 +18,7 @@ def test_packages(host, pkg):
 
 @pytest.mark.parametrize(
     "file,content",
-    [("/etc/sysctl.d/nvme_core_io_timeout.conf", r"^nvme_core.io_timeout=[0-9]*$")],
+    [("/etc/modprobe.d/nvme_core.conf", r"^options nvme_core io_timeout=[0-9]*$")],
 )
 def test_files_content(host, file, content):
     """Test that config files were modified as expected."""

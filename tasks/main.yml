@@ -26,7 +26,7 @@
 # for more details.
 - name: Set NVMe timeout kernel parameter to maximum value
   template:
-    src: nvme_core_io_timeout.conf.j2
-    dest: /etc/sysctl.d/nvme_core_io_timeout.conf
+    src: nvme_core.conf.j2
+    dest: /etc/modprobe.d/nvme_core.conf
     mode: 0400
   when: ansible_distribution != 'Amazon'
