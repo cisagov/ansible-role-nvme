@@ -1,0 +1,8 @@
+# Setting this kernel parameter to a high value fixes the bug where
+# NVMe volumes occassionally fail and are mounted read-only.  This
+# value is the highest accepted by all newer Linux kernels.
+#
+# See
+# https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/nvme-ebs-volumes.html#timeout-nvme-ebs-volumes
+# for more details.
+options nvme_core io_timeout={{ timeout_value }}
