@@ -9,14 +9,14 @@
   set_fact:
     timeout_value: 255
   when:
-    - ansible_facts['distribution'] == 'Debian'
-    - ansible_facts['distribution_major_version'] == '9'
+    - ansible_distribution == 'Debian'
+    - ansible_distribution_major_version == '9'
 
 - name: Set NVMe timeout value to use (not Debian Stretch)
   set_fact:
     timeout_value: 4294967295
   when:
-    - ansible_facts['distribution'] != 'Debian' or ansible_facts['distribution_major_version'] != '9'
+    - ansible_distribution != 'Debian' or ansible_distribution_major_version != '9'
 
 # Setting this kernel parameter to a high value fixes the bug where
 # NVMe volumes occassionally fail and are mounted read-only.
