@@ -1,4 +1,10 @@
 ---
+- name: Import upgrade playbook
+  import_playbook: upgrade.yml
+
+- name: Import python playbook
+  import_playbook: python.yml
+
 # The kmod package is installed anywhere we would be applying this
 # Ansible role
 - name: Prepare
