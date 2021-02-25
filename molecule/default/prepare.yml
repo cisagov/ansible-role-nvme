@@ -1,9 +1,9 @@
 ---
 - name: Import upgrade playbook
-  import_playbook: upgrade.yml
+  ansible.builtin.import_playbook: upgrade.yml
 
 - name: Import python playbook
-  import_playbook: python.yml
+  ansible.builtin.import_playbook: python.yml
 
 # The kmod package is installed anywhere we would be applying this
 # Ansible role
@@ -11,5 +11,5 @@
   hosts: all
   tasks:
     - name: Install kmod
-      package:
+      ansible.builtin.package:
         name: kmod
