@@ -2,18 +2,18 @@
 # tasks file for nvme
 
 - name: Install nvme-cli
-  package:
+  ansible.builtin.package:
     name: nvme-cli
 
 - name: Set NVMe timeout value to use (Debian Stretch)
-  set_fact:
+  ansible.builtin.set_fact:
     timeout_value: 255
   when:
     - ansible_distribution == 'Debian'
     - ansible_distribution_release == 'stretch'
 
 - name: Set NVMe timeout value to use (not Debian Stretch)
-  set_fact:
+  ansible.builtin.set_fact:
     timeout_value: 4294967295
   when:
     - ansible_distribution != 'Debian' or ansible_distribution_release != 'stretch'
@@ -25,7 +25,7 @@
 # https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/nvme-ebs-volumes.html#timeout-nvme-ebs-volumes
 # for more details.
 - name: Set NVMe timeout kernel parameter to maximum value
-  template:
+  ansible.builtin.template:
     src: nvme_core.conf.j2
     dest: /etc/modprobe.d/nvme_core.conf
     mode: 0400
