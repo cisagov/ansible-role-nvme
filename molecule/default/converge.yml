@@ -1,5 +1,7 @@
 ---
 - name: Converge
   hosts: all
-  roles:
-    - role: ansible-role-nvme
+  tasks:
+    - name: Include ansible-role-nvme
+      ansible.builtin.include_role:
+        name: ansible-role-nvme
