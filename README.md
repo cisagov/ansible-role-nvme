@@ -1,8 +1,7 @@
 # ansible-role-nvme #
 
 [![GitHub Build Status](https://github.com/cisagov/ansible-role-nvme/workflows/build/badge.svg)](https://github.com/cisagov/ansible-role-nvme/actions)
-[![Total alerts](https://img.shields.io/lgtm/alerts/g/cisagov/ansible-role-nvme.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/cisagov/ansible-role-nvme/alerts/)
-[![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/cisagov/ansible-role-nvme.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/cisagov/ansible-role-nvme/context:python)
+[![CodeQL](https://github.com/cisagov/ansible-role-nvme/workflows/CodeQL/badge.svg)](https://github.com/cisagov/ansible-role-nvme/actions/workflows/codeql-analysis.yml)
 
 An Ansible role for installing prerequisites and configuring grub to
 handle NVMe drives.
@@ -34,8 +33,10 @@ Here's how to use it in a playbook:
 - hosts: all
   become: yes
   become_method: sudo
-  roles:
-    - nvme
+  tasks:
+    - name: Install prerequisites and configure grub to handle NVMe drives
+      ansible.builtin.include_role:
+        name: nvme
 ```
 
 ## Contributing ##
