@@ -31,7 +31,7 @@ Here's how to use it in a playbook:
 
 ```yaml
 - hosts: all
-  become: yes
+  become: true
   become_method: sudo
   tasks:
     - name: Install prerequisites and configure grub to handle NVMe drives
