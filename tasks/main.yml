@@ -1,22 +1,11 @@
 ---
-# tasks file for nvme
-
 - name: Install nvme-cli
   ansible.builtin.package:
     name: nvme-cli
 
-- name: Set NVMe timeout value to use (Debian Stretch)
-  ansible.builtin.set_fact:
-    timeout_value: 255
-  when:
-    - ansible_distribution == 'Debian'
-    - ansible_distribution_release == 'stretch'
-
-- name: Set NVMe timeout value to use (not Debian Stretch)
+- name: Set NVMe timeout value to use
   ansible.builtin.set_fact:
     timeout_value: 4294967295
-  when:
-    - ansible_distribution != 'Debian' or ansible_distribution_release != 'stretch'
 
 # Setting this kernel parameter to a high value fixes the bug where
 # NVMe volumes occassionally fail and are mounted read-only.
