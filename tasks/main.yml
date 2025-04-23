@@ -17,5 +17,5 @@
   ansible.builtin.template:
     src: nvme_core.conf.j2
     dest: /etc/modprobe.d/nvme_core.conf
-    mode: 0400
+    mode: u=r,g=,o=
   when: ansible_distribution != 'Amazon'
