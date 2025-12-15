@@ -1,6 +1,7 @@
 # ansible-role-nvme #
 
 [![GitHub Build Status](https://github.com/cisagov/ansible-role-nvme/workflows/build/badge.svg)](https://github.com/cisagov/ansible-role-nvme/actions)
+[![License](https://img.shields.io/github/license/cisagov/ansible-role-nvme)](https://spdx.org/licenses/)
 [![CodeQL](https://github.com/cisagov/ansible-role-nvme/workflows/CodeQL/badge.svg)](https://github.com/cisagov/ansible-role-nvme/actions/workflows/codeql-analysis.yml)
 
 An Ansible role for installing prerequisites and configuring grub to
